@@ -1,10 +1,35 @@
+"use client";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  type ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
 import Image from "next/image";
 // todo: mock this as a fake api call using react query
 import data from "public/data.json";
 import logo from "public/stackline_logo.svg";
-
+import { CartesianGrid, Line, LineChart, XAxis } from "recharts";
 export default function HomePage() {
   const product = data[0];
+  const sales = product?.sales;
+  const chartData = sales?.map((sale) => ({
+    weekEnding: sale.weekEnding,
+    retailSales: sale.retailSales,
+    wholesaleSales: sale.wholesaleSales,
+  }));
+  const chartConfig = {
+    wholesaleSales: {
+      label: "Wholesale Sales",
+      color: "#9ba6bf",
+    },
+    retailSales: {
+      label: "Retail Sales",
+      color: "#45a7f6",
+    },
+  } satisfies ChartConfig;
   return (
     <>
       <nav className="flex h-20 w-full items-center bg-[#052849]">
@@ -43,8 +68,54 @@ export default function HomePage() {
           </div>
         </div>
         <div className="col-span-7 row-span-6 rounded-sm bg-white shadow-lg">
-          <h1 className="p-8 text-xl">Retail Sales</h1>
-          <div className="m-4 flex h-[calc(100%-8rem)] w-[calc(100%-2rem)] rounded-lg bg-gray-100"></div>
+          <Card>
+            <CardHeader>
+              <CardTitle>Retail Sales</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ChartContainer config={chartConfig}>
+                <LineChart
+                  accessibilityLayer
+                  data={chartData}
+                  margin={{
+                    left: 12,
+                    right: 12,
+                  }}
+                >
+                  <CartesianGrid vertical={false} />
+                  <XAxis
+                    dataKey="weekEnding"
+                    tickLine={false}
+                    axisLine={false}
+                    tickMargin={8}
+                    tickFormatter={(value: string) =>
+                      new Date(value).toLocaleDateString("en-US", {
+                        month: "short",
+                      })
+                    }
+                  />
+                  <ChartTooltip
+                    cursor={false}
+                    content={<ChartTooltipContent />}
+                  />
+                  <Line
+                    dataKey="retailSales"
+                    type="monotone"
+                    stroke={chartConfig.retailSales.color}
+                    strokeWidth={4}
+                    dot={false}
+                  />
+                  <Line
+                    dataKey="wholesaleSales"
+                    type="monotone"
+                    stroke={chartConfig.wholesaleSales.color}
+                    strokeWidth={4}
+                    dot={false}
+                  />
+                </LineChart>
+              </ChartContainer>
+            </CardContent>
+          </Card>
         </div>
         <div className="col-span-7 row-span-6 rounded-sm bg-white shadow-lg">
           {/* todo: table */}
