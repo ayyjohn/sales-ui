@@ -386,7 +386,6 @@ export default function HomePage() {
                   axisLine={false}
                   tickMargin={8}
                   interval={4}
-                  // todo: make ticks lighter color and slightly bigger
                   tickFormatter={(value: string) =>
                     new Date(value)
                       .toLocaleDateString("en-US", {
