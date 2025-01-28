@@ -327,7 +327,7 @@ export default function HomePage() {
         </div>
       </nav>
       <main className="grid h-full w-full grid-cols-10 grid-rows-12 gap-5 bg-[#f6f8fa] px-4 py-16">
-        <div className="col-span-3 row-span-12 rounded-sm bg-white shadow-lg">
+        <div className="col-span-3 row-span-12 rounded-sm bg-white shadow-sm">
           <div className="flex flex-col items-center p-4">
             <Image
               src={product?.image ?? ""}
@@ -355,7 +355,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        <Card className="col-span-7 row-span-1 rounded-sm border-none bg-white shadow-lg">
+        <Card className="col-span-7 row-span-1 rounded-sm border-none bg-white shadow-sm">
           <CardHeader>
             <CardTitle className="text-lg font-light">Retail Sales</CardTitle>
           </CardHeader>
