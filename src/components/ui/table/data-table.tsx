@@ -53,7 +53,6 @@ function DataTableColumnHeader<TData, TValue>({
   }
 
   const toggleSorting = () => {
-    console.log(column.getIsSorted());
     column.toggleSorting(column.getIsSorted() === "asc");
   };
 
@@ -62,7 +61,7 @@ function DataTableColumnHeader<TData, TValue>({
       variant="ghost"
       onClick={toggleSorting}
       className={cn(
-        "flex h-full w-full items-center rounded-none px-0 py-8 font-light text-gray-800",
+        "flex h-full w-full items-center text-wrap rounded-none px-0 py-8 font-light text-gray-800",
         alignment === "start" && "justify-start",
         alignment === "end" && "justify-end",
       )}

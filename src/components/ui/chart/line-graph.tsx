@@ -40,7 +40,7 @@ export default function LineGraph({ sales }: { sales: Sales[] }) {
   }));
 
   return (
-    <ChartContainer config={chartConfig}>
+    <ChartContainer config={chartConfig} className="p-8">
       <LineChart
         accessibilityLayer
         data={chartData}
