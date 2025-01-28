@@ -319,15 +319,15 @@ export default function HomePage() {
 
   return (
     <>
-      <nav className="flex h-20 w-full items-center bg-[#052849]">
+      <nav className="sticky top-0 z-10 flex h-20 w-full items-center bg-[#052849]">
         <div className="ml-8 flex flex-col">
           {/* todo: add svgr to avoid this error */}
           <Image src={logo} alt="Stackline Logo" height={30} />
           <div className="mt-2 h-1 w-full bg-white"></div>
         </div>
       </nav>
-      <main className="grid h-full w-full grid-cols-10 grid-rows-12 gap-5 bg-[#f6f8fa] px-4 py-16">
-        <Card className="col-span-2 row-span-12 rounded-sm border-none bg-white shadow-sm">
+      <main className="grid grid-cols-1 gap-5 bg-[#f6f8fa] px-4 py-16 lg:grid-cols-[20rem_1fr] lg:grid-rows-[1fr_auto]">
+        <Card className="col-span-1 row-span-2 rounded-sm border-none bg-white shadow-sm">
           <CardContent className="flex flex-col items-center p-4">
             <Image
               src={product?.image ?? ""}
@@ -341,7 +341,7 @@ export default function HomePage() {
             <p className="px-6 text-center text-sm font-light text-gray-400">
               {product?.subtitle}
             </p>
-            <div className="-mx-4 mt-4 border-y border-gray-100 p-4">
+            <div className="-mx-4 mt-4 border-gray-100 p-4 lg:border-y">
               <ul className="flex flex-row flex-wrap gap-2 gap-y-4">
                 {product?.tags.map((tag) => (
                   <li
@@ -355,7 +355,7 @@ export default function HomePage() {
             </div>
           </CardContent>
         </Card>
-        <Card className="col-span-8 row-span-1 rounded-sm border-none bg-white shadow-sm">
+        <Card className="col-span-1 row-span-1 rounded-sm border-none bg-white shadow-sm">
           <CardHeader>
             <CardTitle className="text-lg font-light">Retail Sales</CardTitle>
           </CardHeader>
@@ -415,7 +415,7 @@ export default function HomePage() {
             </ChartContainer>
           </CardContent>
         </Card>
-        <Card className="col-span-8 row-span-6 m-0 h-fit rounded-sm border-none bg-white shadow-sm">
+        <Card className="col-span-1 row-span-1 m-0 h-fit rounded-sm border-none bg-white shadow-sm">
           <CardContent className="p-0">
             <DataTable columns={columns} data={sales} />
           </CardContent>
