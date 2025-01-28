@@ -327,8 +327,8 @@ export default function HomePage() {
         </div>
       </nav>
       <main className="grid h-full w-full grid-cols-10 grid-rows-12 gap-5 bg-[#f6f8fa] px-4 py-16">
-        <div className="col-span-3 row-span-12 rounded-sm bg-white shadow-sm">
-          <div className="flex flex-col items-center p-4">
+        <Card className="col-span-2 row-span-12 rounded-sm border-none bg-white shadow-sm">
+          <CardContent className="flex flex-col items-center p-4">
             <Image
               src={product?.image ?? ""}
               alt={product?.title ?? ""}
@@ -338,7 +338,7 @@ export default function HomePage() {
             <h1 className="mb-2 text-center text-2xl font-bold">
               {product?.title}
             </h1>
-            <p className="px-8 text-center text-sm font-light text-gray-400">
+            <p className="px-6 text-center text-sm font-light text-gray-400">
               {product?.subtitle}
             </p>
             <div className="-mx-4 mt-4 border-y border-gray-100 p-4">
@@ -353,9 +353,9 @@ export default function HomePage() {
                 ))}
               </ul>
             </div>
-          </div>
-        </div>
-        <Card className="col-span-7 row-span-1 rounded-sm border-none bg-white shadow-sm">
+          </CardContent>
+        </Card>
+        <Card className="col-span-8 row-span-1 rounded-sm border-none bg-white shadow-sm">
           <CardHeader>
             <CardTitle className="text-lg font-light">Retail Sales</CardTitle>
           </CardHeader>
@@ -378,6 +378,7 @@ export default function HomePage() {
                   domain={["dataMin - 2000000", "dataMax + 2000000"]}
                 />
                 <XAxis
+                  className="text-md font-extralight"
                   dataKey="date"
                   tickLine={false}
                   axisLine={false}
@@ -414,7 +415,7 @@ export default function HomePage() {
             </ChartContainer>
           </CardContent>
         </Card>
-        <Card className="col-span-7 row-span-6 m-0 h-fit rounded-sm border-none bg-white shadow-sm">
+        <Card className="col-span-8 row-span-6 m-0 h-fit rounded-sm border-none bg-white shadow-sm">
           <CardContent className="p-0">
             <DataTable columns={columns} data={sales} />
           </CardContent>
