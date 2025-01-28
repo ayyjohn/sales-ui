@@ -1,3 +1,5 @@
+import { NavBar } from "@/app/_components/nav-bar";
+import { Providers } from "@/app/_components/providers";
 import "@/styles/globals.css";
 
 import { type Metadata } from "next";
@@ -16,9 +18,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${inter.className}`}>
-      <body className="grid h-full min-h-screen w-full grid-rows-[5rem_1fr]">
-        {children}
-      </body>
+      <Providers>
+        <body className="grid h-full min-h-screen w-full grid-rows-[5rem_1fr]">
+          <NavBar />
+          {children}
+        </body>
+      </Providers>
     </html>
   );
 }

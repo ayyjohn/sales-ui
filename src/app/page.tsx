@@ -1,23 +1,30 @@
 "use client";
 
-import { NavBar } from "@/app/_components/nav-bar";
 import * as Card from "@/components/ui/card";
 
 import LineGraph from "@/components/ui/chart/line-graph";
 import { ProductDetail } from "@/components/ui/product/product-detail";
 import { Separator } from "@/components/ui/separator";
 import DataTable, { columns } from "@/components/ui/table/data-table";
-import data from "public/data.json";
+import { getProductData } from "@/server/fakeApi";
+import { useQuery } from "@tanstack/react-query";
 
 export default function HomePage() {
-  // todo: mock this as a fake api call using react query
-  const product = data[0];
+  const productId = "B007TIE0GQ";
+  const { data: product, isLoading } = useQuery({
+    queryKey: ["product", productId],
+    queryFn: () => getProductData(productId),
+  });
   const sales = product?.sales ?? [];
 
   // todo: add skeleton loaders
+  if (isLoading) {
+    return (
+      <div className="flex h-full items-center justify-center">Loading...</div>
+    );
+  }
   return (
     <>
-      <NavBar />
       <main className="grid grid-cols-1 gap-5 bg-[#f6f8fa] px-4 py-16 lg:grid-cols-[20rem_1fr] lg:grid-rows-[1fr_auto]">
         <Card.Card className="col-span-1 row-span-2 rounded-sm border-none bg-white shadow-sm">
           <Card.CardContent className="flex flex-col items-center p-4">

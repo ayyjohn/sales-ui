@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import * as Table from "@/components/ui/table";
 import { cn } from "@/lib/utils";
