@@ -3,7 +3,6 @@
 import { NavBar } from "@/app/_components/nav-bar";
 import * as Card from "@/components/ui/card";
 
-// todo: mock this as a fake api call using react query
 import LineGraph from "@/components/ui/chart/line-graph";
 import { ProductDetail } from "@/components/ui/product/product-detail";
 import { Separator } from "@/components/ui/separator";

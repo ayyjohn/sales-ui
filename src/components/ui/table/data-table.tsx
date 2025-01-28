@@ -34,11 +34,9 @@ type DataTableColumnHeaderProps<TData, TValue> = {
   alignment?: "start" | "end";
 } & React.HTMLAttributes<HTMLDivElement>;
 
-// todo: move this to utils
 const formatter = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
-  // todo: why is this erroring, it works
   trailingZeroDisplay: "stripIfInteger",
 });
 
