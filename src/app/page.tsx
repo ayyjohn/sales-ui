@@ -289,7 +289,7 @@ export default function HomePage() {
             </TableRow>
           )}
         </TableBody>
-        <TableFooter>
+        <TableFooter className="bg-white">
           <TableRow>
             <TableCell colSpan={columns.length}>
               <div className="flex w-full items-center justify-center gap-2 py-4">
@@ -414,7 +414,7 @@ export default function HomePage() {
             </ChartContainer>
           </CardContent>
         </Card>
-        <Card className="col-span-7 row-span-6 m-0 rounded-sm border-none bg-white shadow-lg">
+        <Card className="col-span-7 row-span-6 m-0 h-fit rounded-sm border-none bg-white shadow-sm">
           <CardContent className="p-0">
             <DataTable columns={columns} data={sales} />
           </CardContent>
